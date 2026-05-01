@@ -1,0 +1,54 @@
+experiment:
+  run_name: null
+  seed: 42
+  deterministic: true
+  device: auto
+
+paths:
+  train_dataset_dir: ../kagglehub/datasets/impaired
+  test_dataset_dir: ../kagglehub/datasets/huynhthethien/radarcommunsignaldata2026test/versions/1
+  output_dir: output
+  model_filename: TrainedModel.pt
+  metrics_filename: training_metrics.csv
+  resolved_config_filename: resolved_config.yaml
+
+data:
+  n_splits: 5
+  fold_index: 0
+  batch_size_train: 64
+  batch_size_val: 32
+  num_workers: 4
+  pin_memory: true
+  drop_last_train: true
+  normalize_mean: [0.5, 0.5, 0.5]
+  normalize_std: [0.5, 0.5, 0.5]
+  time_mask_param: 15
+  freq_mask_param: 20
+
+model:
+  num_classes: 12
+
+train:
+  num_epochs: 20
+  learning_rate: 0.0003
+  weight_decay: 0.01
+  eta_min: 0.000001
+  grad_clip_factor: 0.01
+  amp: true
+
+wandb:
+  enabled: true
+  project: waveNet-radar
+  entity: null
+  run_name: null
+  mode: offline
+  tags: [wavenet, radar]
+  notes: Train WaveCNN with reproducible config
+
+visualize:
+  enabled: true
+  confusion_threshold: 3
+
+evaluation:
+  batch_size: 128
+  num_workers: 4
