@@ -1,11 +1,11 @@
-# 🎧 Spectrogram Audio Classifier
+# Spectrogram Classifier
 
 A deep learning project for audio classification using spectrogram representations.
 This project is designed with a clean, modular structure for scalability, experimentation, and reproducibility.
 
 ---
 
-## 🚀 Overview
+## Overview
 
 This project converts raw audio signals into spectrograms and trains a deep learning model to classify them into different categories.
 
@@ -17,14 +17,14 @@ This project converts raw audio signals into spectrograms and trains a deep lear
 
 ---
 
-## 🧠 Features
+## Features
 
-* 📊 Spectrogram-based audio processing
-* 🧩 Modular architecture (easy to extend)
-* ⚙️ Config-driven experiments
-* 📈 Training & evaluation pipeline
-* 🧪 Experiment management
-* 📦 Organized output (logs, checkpoints)
+* Spectrogram-based audio processing
+* Modular architecture (easy to extend)
+* ⚙Config-driven experiments
+* Training & evaluation pipeline
+* Experiment management
+* Organized output (logs, checkpoints)
 
 ---
 
@@ -38,14 +38,13 @@ classifier_spectrogram/        <-- ROOT
 │       ├── config/        # Training & model configurations
 │       ├── datasets/      # Data loading & preprocessing
 │       ├── eval/          # Evaluation metrics & scripts
-│       ├── experiment/    # Experiment tracking & setup
 │       ├── module/        # Model architectures
+│       ├── output/        # Logs, checkpoints, results
 │       ├── train/         # Training pipeline
 │       ├── utils/         # Helper functions
 │       ├── __init__.py
 │       └── main.py        # Entry point
 │
-├── output/                # Logs, checkpoints, results
 ├── requirements.txt       # Dependencies
 ├── README.md
 └── .gitignore
@@ -53,7 +52,7 @@ classifier_spectrogram/        <-- ROOT
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 Clone the repository:
 
@@ -94,7 +93,7 @@ src/classifier_spectrogram/config/
 
 ---
 
-## 🧪 Experiments
+## Experiments
 
 * Easily run multiple experiments by modifying config files
 * Outputs are stored in:
@@ -111,7 +110,7 @@ Typical contents:
 
 ---
 
-## 📊 Pipeline
+## Pipeline
 
 1. Load audio dataset
 2. Convert to spectrogram
@@ -121,7 +120,7 @@ Typical contents:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * Python
 * NumPy
@@ -130,7 +129,7 @@ Typical contents:
 
 ---
 
-## 🎯 Future Improvements
+## Future Improvements
 
 * [ ] Add advanced models (CNN, Transformer)
 * [ ] Integrate experiment tracking (e.g., MLflow, WandB)
@@ -140,26 +139,26 @@ Typical contents:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to fork this repo and submit pull requests.
 
 ---
 
-## 📜 License
+##  License
 
 This project is for educational and research purposes.
 
 ---
 
-## 👤 Author
+## Author
 
 **Lê Văn Khải**
 AI Engineer (aspiring)
 
 ---
 
-## ⭐ Notes
+## Notes
 
 This project is structured to reflect real-world AI systems:
 
