@@ -1,5 +1,5 @@
 import argparse
-
+import kagglehub
 import torch
 import os
 
@@ -11,7 +11,7 @@ from classifier_spectrogram.src.classifier_spectrogram.config import (
     resolve_device,
     seed_everything,
 )
-from classifier_spectrogram.src.classifier_spectrogram.datasets import Preprocessing
+from classifier_spectrogram.src.classifier_spectrogram.datasets.processing import Preprocessing
 from classifier_spectrogram.src.classifier_spectrogram.train.training import train_model
 from classifier_spectrogram.src.classifier_spectrogram.utils.visualize import Visualize
 
@@ -67,8 +67,9 @@ def main():
     print(f"Run directory: {run_dir}")
 
     root_dir = config["paths"]["train_dataset_dir"]
+    link_datasets = kagglehub.dataset_download(root_dir)
     pipeline_preprocessing = Preprocessing(
-        root_dir=root_dir,
+        root_dir=link_datasets,
         data_config=config.get("data", {}),
         seed=seed,
     )
