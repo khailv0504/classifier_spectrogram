@@ -5,10 +5,10 @@ experiment:
   device: auto
 
 paths:
-  train_dataset_dir: ../kagglehub/datasets/impaired
-  test_dataset_dir: ../kagglehub/datasets/huynhthethien/radarcommunsignaldata2026test/versions/1
+  train_dataset_dir: D:\deep_learning\kagglehub\datasets\impaired
+  test_dataset_dir: ../kagglehub/datasets/huynhthethien/radarcommunsignaldata2026test
   output_dir: output
-  model_filename: TrainedModel.pt
+  model_filename: TrainedModel.pth
   metrics_filename: training_metrics.csv
   resolved_config_filename: resolved_config.yaml
 

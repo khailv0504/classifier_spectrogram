@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-from classifier_spectrogram.src.classifier_spectrogram.module.ecaBlock import ECABlock
+from classifier_spectrogram.src.module.ecaBlock import ECABlock
 
 
 class MBConvLite(nn.Module):

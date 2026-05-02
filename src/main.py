@@ -3,7 +3,6 @@ import argparse
 import torch
 import os
 
-
 torch.backends.cudnn.deterministic = True
 os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 from src.config import (
@@ -113,12 +112,9 @@ def main():
         except KeyboardInterrupt:
             print("Interrupted by user")
 
-        model.eval()
-        example_input = torch.randn(1, 3, 224, 224).to(device)
-        traced_model = torch.jit.trace(model, example_input)
         model_path = config["paths"]["model_path"]
-        traced_model.save(model_path)
-        print("Model saved:", model_path)
+        torch.save(model.state_dict(), model_path)
+
 
         if wandb_run is not None:
             wandb_run.summary["best_val_acc"] = best_acc

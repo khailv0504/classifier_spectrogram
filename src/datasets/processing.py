@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader
 from torchvision.transforms import v2
 
 
-from classifier_spectrogram.src.classifier_spectrogram.datasets.spectrogram import SpectrogramDataset
+from classifier_spectrogram.src.datasets.spectrogram import SpectrogramDataset
 
 
 class Preprocessing:

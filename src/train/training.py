@@ -9,7 +9,7 @@ from torch.optim import AdamW
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from tqdm import tqdm
 
-from classifier_spectrogram.src.classifier_spectrogram.utils.focal_loss import FocalLoss
+from src.utils.focal_loss import FocalLoss
 
 
 def train_model(model, train_loader, val_loader, DEVICE, train_config, metrics_csv_path, wandb_run=None):

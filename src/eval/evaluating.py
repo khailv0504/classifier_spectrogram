@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 from tqdm import tqdm
 
-from classifier_spectrogram.src.classifier_spectrogram.config import load_config, resolve_device
+from classifier_spectrogram.src.config import load_config, resolve_device
 
 
 def parse_args():

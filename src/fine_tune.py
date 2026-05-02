@@ -1,21 +1,24 @@
 import argparse
-import kagglehub
+
 import torch
 import os
 
+from torch import nn
+
 torch.backends.cudnn.deterministic = True
 os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
-from classifier_spectrogram.src.classifier_spectrogram.config import (
+from src.config import (
     load_config,
     prepare_run_directory,
     resolve_device,
     seed_everything,
 )
-from classifier_spectrogram.src.classifier_spectrogram.datasets.processing import Preprocessing
-from classifier_spectrogram.src.classifier_spectrogram.train.training import train_model
-from classifier_spectrogram.src.classifier_spectrogram.utils.visualize import Visualize
 
-from classifier_spectrogram.src.classifier_spectrogram.module.waveCNN import WaveCNN
+from src.datasets.processing import Preprocessing
+from src.train.training import train_model
+from src.utils.visualize import Visualize
+
+from src.module.waveCNN import WaveCNN
 
 
 def parse_args():
@@ -67,9 +70,8 @@ def main():
     print(f"Run directory: {run_dir}")
 
     root_dir = config["paths"]["train_dataset_dir"]
-    link_datasets = kagglehub.dataset_download(root_dir)
     pipeline_preprocessing = Preprocessing(
-        root_dir=link_datasets,
+        root_dir=root_dir,
         data_config=config.get("data", {}),
         seed=seed,
     )
@@ -79,7 +81,13 @@ def main():
     model_cfg = config.get("model", {})
     num_classes = int(model_cfg.get("num_classes", len(class_names)))
 
-    model = WaveCNN(num_classes=num_classes).to(device)
+    model = torch.jit.load(r"D:\deep_learning\classifier_spectrogram\src\output\20260502_080655\TrainedModel.pt")
+    for p in model.parameters():
+        p.requires_grad = False
+    
+    in_features = model.head[3].in_features
+    model.head[3] = nn.Linear(in_features, num_classes)
+    model = model.to(device)
 
     print("Params: ", sum(p.numel() for p in model.parameters()))
 

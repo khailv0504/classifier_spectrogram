@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-from classifier_spectrogram.src.classifier_spectrogram.module.mbConvLite import MBConvLite
+from classifier_spectrogram.src.module.mbConvLite import MBConvLite
 
 def init_weights_he(m):
     """Initialize model layers with He-style defaults.
